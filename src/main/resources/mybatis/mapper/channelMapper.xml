@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spb.cc.spbccCore.mapper.ChannelMapper">
+	<resultMap id="BaseResultMap" type="com.spb.cc.spbccCore.entity.Channel">
+		<result column="PCMC_MERCODE" property="merCode" jdbcType="VARCHAR" />
+		<result column="PCMC_CHANNEL" property="channel" jdbcType="VARCHAR" />
+		<result column="PCMC_STT" property="stt" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		PCMC_MERCODE, PCMC_CHANNEL, PCMC_STT
+	</sql>
+
+	<select id="getChannelList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM P2P_CHANNEL_MERCODE
+	</select>
+
+	<select id="getChannelById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM P2P_CHANNEL_MERCODE
+		WHERE id = #{id}
+	</select>
+
+	<insert id="add" parameterType="com.spb.cc.spbccCore.entity.Channel">
+		INSERT INTO
+		P2P_CHANNEL_MERCODE
+		(username,age,ctm)
+		VALUES
+		(#{username}, #{age}, now())
+	</insert>
+
+	<update id="update" parameterType="java.util.Map">
+		UPDATE
+		P2P_CHANNEL_MERCODE
+		SET
+		username = #{user.username},age = #{user.age}
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM
+		P2P_CHANNEL_MERCODE
+		WHERE
+		id = #{id}
+	</delete>
+</mapper>
