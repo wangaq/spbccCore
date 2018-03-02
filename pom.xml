@@ -55,6 +55,14 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- sb1.5.2及以上版本加此依赖 输出日志 -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.25</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		
 		<!-- 打war包时加入此项， 告诉spring-boot tomcat相关jar包用外部的，不要打进去 -->
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
